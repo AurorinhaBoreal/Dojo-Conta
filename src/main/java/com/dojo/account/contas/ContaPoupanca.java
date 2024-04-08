@@ -4,19 +4,20 @@ import java.util.Date;
 import com.dojo.account.modelo.Conta;
 
 public class ContaPoupanca extends Conta {
-    private int depositoInicial = 50;
+    private final int minDepositoInicial = 50;
+    private final double taxaRendimento = 0.05;
+    private double depositoInicial;
     private Date dataAbertura;
-    private double taxaRendimento = 0.05;
 
     
-    public ContaPoupanca(int depositoInicial, Date dataAbertura, double taxaRendimento) {
+    public ContaPoupanca(Long idConta, Long idUsuario, double depositoInicial, Date dataAbertura) {
+        super(idConta, idUsuario);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
-        this.taxaRendimento = taxaRendimento;
     }
 
     @Override
-    public void sacar(double valor) {
+    public void saque(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor inválido");            
         } if(this.saldo - valor < 0){
@@ -27,7 +28,7 @@ public class ContaPoupanca extends Conta {
     }
     
     @Override
-    public void depositar(double valor) {
+    public void deposito(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor inválido");    
         }
