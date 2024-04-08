@@ -1,6 +1,7 @@
-package main.java.com.dojo.account.contas;
+package com.dojo.account.contas;
 
 import java.util.Date;
+import com.dojo.account.modelo.Conta;
 
 public class ContaPoupanca extends Conta {
     private int depositoInicial = 50;

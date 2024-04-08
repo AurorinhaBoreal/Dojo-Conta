@@ -1,6 +1,6 @@
-package main.java.com.dojo.account.modelo;
+package com.dojo.account.modelo;
 
-import main.java.com.dojo.account.contas.ContaCorrente;
+import com.dojo.account.contas.ContaCorrente;
 
 public class Usuario {
     private String nome;

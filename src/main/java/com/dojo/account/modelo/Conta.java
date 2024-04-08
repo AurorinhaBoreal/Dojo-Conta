@@ -1,4 +1,4 @@
-package main.java.com.dojo.account.modelo;
+package com.dojo.account.modelo;
 
 public abstract class Conta {
     private Long idConta;

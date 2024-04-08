@@ -1,6 +1,6 @@
-package main.java.com.dojo.account.contas;
+package com.dojo.account.contas;
 
-import main.java.com.dojo.account.modelo.Conta;
+import com.dojo.account.modelo.Conta;
 
 public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
