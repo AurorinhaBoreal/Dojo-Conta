@@ -10,7 +10,7 @@ public class ContaInvestimento extends Conta{
     private Date dataAbertura;
     private double saldo = 0;
         
-    public ContaInvestimento(Long idConta, double depositoInicial, Date dataAbertura) {
+    public ContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
         super(idConta);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
@@ -22,6 +22,9 @@ public class ContaInvestimento extends Conta{
     }
     
     @Override
+    public void transferir(double valor, Conta conta) {};
+
+    @Override
     public void deposito(double valor) {
         if(saldo == 0){
             saldo = depositoInicial;
@@ -30,7 +33,7 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public void saque(double valor) {
-    Long dias = 0L;
+        Long dias = 0L;
 
         if (dataAbertura != null){
             Date dataAtual = new Date();

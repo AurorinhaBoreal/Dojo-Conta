@@ -10,7 +10,7 @@ public class ContaPoupanca extends Conta {
     private Date dataAbertura;
     private double saldo = 0;
     
-    public ContaPoupanca(Long idConta, double depositoInicial, Date dataAbertura) {
+    public ContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         super(idConta);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
@@ -41,11 +41,20 @@ public class ContaPoupanca extends Conta {
         System.out.println("Depósito efetuado com Sucesso!!");
     }
 
+    @Override
+    public void transferir(double valor, Conta conta) {
+
+    }
+    @Override
+    public String toString() {
+        return "Conta Poupança | ID: " + getIdConta();
+    }
+
     public void rendimento() {
         if (dataAbertura != null){
             Date dataAtual = new Date();
-            long diferenca = dataAtual.getTime() - dataAbertura.getTime();
-            long dias = diferenca / (1000 * 60 * 60 * 24);
+            Long diferenca = dataAtual.getTime() - dataAbertura.getTime();
+            Long dias = diferenca / (1000 * 60 * 60 * 24);
             this.saldo += this.saldo * taxaRendimento * dias;
         }
     }
