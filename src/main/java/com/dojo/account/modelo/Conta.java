@@ -4,11 +4,9 @@ import com.dojo.account.interfaces.ContasMetodos;
 
 public abstract class Conta implements ContasMetodos {
     private Long idConta;
-    private Long idUsuario;
 
-    public Conta(Long idConta, Long idUsuario) {
+    public Conta(Long idConta) {
         this.idConta = idConta;
-        this.idUsuario = idUsuario;
     }
 
     public abstract String consultarSaldo();

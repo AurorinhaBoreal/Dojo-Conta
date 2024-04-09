@@ -6,8 +6,8 @@ public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
     private double saldo = 0;
 
-    public ContaCorrente(Long idConta, Long idUsuario) {
-        super(idConta, idUsuario);
+    public ContaCorrente(Long idConta) {
+        super(idConta);
     }
 
     @Override

@@ -4,41 +4,41 @@ import java.util.ArrayList;
 
 public class Usuario {
     private ArrayList<Conta> accountList = new ArrayList<>();
-    private String name;
-    private int userID;
-    private boolean hasCA = false;
-    private boolean hasSA = false;
-    private boolean hasIA = false;
+    private String nome;
+    private int idUsuario;
+    private boolean temCC = false;
+    private boolean temCP = false;
+    private boolean temCI = false;
     
     
-    public Usuario(String name, int userID) {
-        this.name = name;
-        this.userID = userID;
+    public Usuario(String nome, int idUsuario) {
+        this.nome = nome;
+        this.idUsuario = idUsuario;
     }
 
-    private String getName() {
-        return name;
+    private String getNome() {
+        return nome;
     }
 
-    private void creatingCA() {
-        hasCA = true;
+    private void criandoCC() {
+        temCC = true;
     }
 
-    private void creatingSA() {
-        hasSA = true;
+    private void criandoCP() {
+        temCP = true;
     }
 
-    private void creatingIA() {
-        hasIA = true;
+    private void criandoCI() {
+        temCI = true;
     }
 
     @Override
     public String toString() {
-        return "| ID: "+this.userID+" | Usuário: "+this.name+" |";
+        return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
     }
-    
+
     public void getAccounts() {
-        System.out.println(String.format("Contas do Usuário: %s", name));
+        System.out.println(String.format("Contas do Usuário: %s", nome));
         accountList.forEach((account) -> {
             System.out.println(account);
         });
