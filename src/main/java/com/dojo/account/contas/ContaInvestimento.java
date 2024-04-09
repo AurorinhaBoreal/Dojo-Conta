@@ -6,13 +6,12 @@ import com.dojo.account.modelo.Conta;
 public class ContaInvestimento extends Conta{
     private final int minDepositoInicial = 1000;
     private final double taxaRendimento = 0.10;
-    private double depositoInicial;
     private Date dataAbertura;
     private double saldo = 0;
         
-    public ContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
+    public ContaInvestimento(int idConta, double saldo, Date dataAbertura) {
         super(idConta);
-        this.depositoInicial = depositoInicial;
+        this.saldo = saldo;
         this.dataAbertura = dataAbertura;
     }
 
@@ -23,7 +22,7 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public String consultarSaldo() {
-        return "Seu saldo é "+saldo;
+        return "Seu saldo é "+this.saldo;
     }
     
     @Override
@@ -32,8 +31,9 @@ public class ContaInvestimento extends Conta{
     @Override
     public void deposito(double valor) {
         if(saldo == 0){
-            saldo = depositoInicial;
+            saldo = -minDepositoInicial;
         }
+        saldo =+ saldo;
     }
 
     @Override
@@ -45,13 +45,11 @@ public class ContaInvestimento extends Conta{
             Long diferenca = dataAtual.getTime() - dataAbertura.getTime();
             dias = diferenca / (1000 * 60 * 60 * 24);
             this.saldo += this.saldo * taxaRendimento * dias;
-            System.out.println("Deposito efetuado com Sucesso!!");
         }
         
         if (dias >= 1) {
             if(saldo >= valor){
                 saldo -= valor;
-                System.out.println("Saque efetuado com Sucesso!!");
             }
         }
     }
