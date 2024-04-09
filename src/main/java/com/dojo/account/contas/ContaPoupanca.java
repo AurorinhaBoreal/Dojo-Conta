@@ -10,8 +10,6 @@ public class ContaPoupanca extends Conta {
     private Date dataAbertura;
     private double saldo = 0;
 
-
-    
     public ContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         super(idConta);
         this.depositoInicial = depositoInicial;
@@ -26,9 +24,9 @@ public class ContaPoupanca extends Conta {
     @Override
     public void saque(double valor) {
         if (valor <= 0) {
-            throw new IllegalArgumentException("Valor inválido");            
+            throw new IllegalArgumentException("Valor inválido");
         } if(this.saldo - valor < 0){
-            throw new IllegalArgumentException("Saldo insuficiente");          
+            throw new IllegalArgumentException("Saldo insuficiente");
         }
         this.saldo -= valor;
         System.out.println("Saque efetuado com Sucesso!!");
@@ -36,9 +34,8 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public void deposito(double valor) {
-        valor = 50;
         if (valor <= 0) {
-            throw new IllegalArgumentException("Valor inválido");    
+            throw new IllegalArgumentException("Valor inválido");
         }
         this.saldo += valor;
         System.out.println("Depósito efetuado com Sucesso!!");
@@ -62,4 +59,3 @@ public class ContaPoupanca extends Conta {
         }
     }
 }
-
