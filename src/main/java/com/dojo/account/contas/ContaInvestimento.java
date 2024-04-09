@@ -10,8 +10,8 @@ public class ContaInvestimento extends Conta{
     private Date dataAbertura;
     private double saldo = 0;
         
-    public ContaInvestimento(Long idConta, Long idUsuario, double depositoInicial, Date dataAbertura) {
-        super(idConta, idUsuario);
+    public ContaInvestimento(Long idConta, double depositoInicial, Date dataAbertura) {
+        super(idConta);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
     }
