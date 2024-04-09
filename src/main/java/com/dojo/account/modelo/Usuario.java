@@ -71,8 +71,9 @@ public class Usuario {
     public void removerConta(int idConta) {
         accountList.forEach((account) ->{//método pra buscar na lista
             int idBuscado = accountList.get(accountList.indexOf(account)).getIdConta();
-            if(idBuscado == idConta) {
-                accountList.remove(idConta);
+            if (idBuscado == idConta) {
+                int indexAccount = accountList.indexOf(account);
+                accountList.remove(indexAccount);
             }
         });
     }
