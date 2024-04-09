@@ -1,6 +1,8 @@
 package com.dojo.account.modelo;
 
-public abstract class Conta {
+import com.dojo.account.interfaces.ContasMetodos;
+
+public abstract class Conta implements ContasMetodos {
     private Long idConta;
     private Long idUsuario;
 
@@ -13,6 +15,6 @@ public abstract class Conta {
 
     public abstract void saque(double quantiaSaque);
 
-    public abstract void deposito(double quantiaDeposito);
+    public abstract void deposito(double valor);
     
 }
