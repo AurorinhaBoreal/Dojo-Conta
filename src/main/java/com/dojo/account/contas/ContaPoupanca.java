@@ -9,6 +9,8 @@ public class ContaPoupanca extends Conta {
     private double depositoInicial;
     private Date dataAbertura;
     private double saldo = 0;
+
+
     
     public ContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         super(idConta);
@@ -31,9 +33,10 @@ public class ContaPoupanca extends Conta {
         this.saldo -= valor;
         System.out.println("Saque efetuado com Sucesso!!");
     }
-    
+
     @Override
     public void deposito(double valor) {
+        valor = 50;
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor inválido");    
         }

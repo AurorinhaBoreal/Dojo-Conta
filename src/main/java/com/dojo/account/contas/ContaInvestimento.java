@@ -26,10 +26,13 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public void deposito(double valor) {
-        if(saldo == 0){
-            saldo = depositoInicial;
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor inválido");
         }
+        saldo += valor;
+        System.out.println("Depósito efetuado com Sucesso!!");
     }
+
 
     @Override
     public void saque(double valor) {
@@ -40,7 +43,7 @@ public class ContaInvestimento extends Conta{
             Long diferenca = dataAtual.getTime() - dataAbertura.getTime();
             dias = diferenca / (1000 * 60 * 60 * 24);
             this.saldo += this.saldo * taxaRendimento * dias;
-            System.out.println("Deposito efetuado com Sucesso!!");
+            System.out.println("Saque efetuado com Sucesso!!");
         }
         
         if (dias >= 1) {

@@ -23,7 +23,7 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    private String getNome() {
+    public String getNome() {
         return nome;
     }
 
