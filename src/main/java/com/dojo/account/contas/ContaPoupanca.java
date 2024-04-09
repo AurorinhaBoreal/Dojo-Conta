@@ -44,8 +44,8 @@ public class ContaPoupanca extends Conta {
     public void rendimento() {
         if (dataAbertura != null){
             Date dataAtual = new Date();
-            int diferenca = dataAtual.getTime() - dataAbertura.getTime();
-            int dias = diferenca / (1000 * 60 * 60 * 24);
+            Long diferenca = dataAtual.getTime() - dataAbertura.getTime();
+            Long dias = diferenca / (1000 * 60 * 60 * 24);
             this.saldo += this.saldo * taxaRendimento * dias;
         }
     }
