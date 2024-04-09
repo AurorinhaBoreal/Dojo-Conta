@@ -9,8 +9,8 @@ import java.util.Date;
 
 public class Usuario {
     private ArrayList<Conta> accountList = new ArrayList<>();
-    private String nome;
     private int idUsuario;
+    private String nome;
     private boolean temCC = false;
     private boolean temCP = false;
     private boolean temCI = false;
@@ -21,6 +21,7 @@ public class Usuario {
     public Usuario(String nome, int idUsuario) {
         this.nome = nome;
         this.idUsuario = idUsuario;
+        this.nome = nome;
     }
 
     private String getNome() {
@@ -39,10 +40,12 @@ public class Usuario {
         } else {
             contaCorrente = new ContaCorrente(idConta);
             temCC = true;
+            System.out.println("Essa é a CC:"+contaCorrente);
             accountList.add(contaCorrente);
             return contaCorrente;
         }
     }
+
 
     public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCP) {
@@ -51,6 +54,7 @@ public class Usuario {
         } else {
             contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
             temCP = true;
+            System.out.println("Essa é a CP:"+contaPoupanca);
             accountList.add(contaPoupanca);
             return contaPoupanca;
         }
@@ -63,19 +67,19 @@ public class Usuario {
         } else {
             contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
             temCI = true;
+            System.out.println("Essa é a CI:"+contaInvestimento);
             accountList.add(contaInvestimento);
             return contaInvestimento;
         }
     }
 
     public void removerConta(int idConta) {
-        accountList.forEach((account) ->{//método pra buscar na lista
-            int idBuscado = accountList.get(accountList.indexOf(account)).getIdConta();
-            if (idBuscado == idConta) {
-                int indexAccount = accountList.indexOf(account);
-                accountList.remove(indexAccount);
-            }
-        });
+        boolean removed = accountList.removeIf(account -> account.getIdConta() == idConta);
+        if (removed) {
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
+        }
     }
 
     public ContaInvestimento getContaInvestimento() {

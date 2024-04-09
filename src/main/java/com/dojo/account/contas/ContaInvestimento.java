@@ -17,6 +17,11 @@ public class ContaInvestimento extends Conta{
     }
 
     @Override
+    public String toString() {
+        return "Conta Investimento | ID: " + getIdConta();
+    }
+
+    @Override
     public String consultarSaldo() {
         return "Seu saldo é "+saldo;
     }
