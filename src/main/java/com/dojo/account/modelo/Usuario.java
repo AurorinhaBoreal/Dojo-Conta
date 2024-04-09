@@ -1,42 +1,46 @@
 package com.dojo.account.modelo;
 
-import com.dojo.account.contas.ContaCorrente;
+import java.util.ArrayList;
 
 public class Usuario {
-    private String nome;
-    private Long idDoUsuario;
-    private boolean temCC = false;
-    private boolean temCP = false;
-    private boolean temCI = false;
-    private Conta contaCorrente;
+    private ArrayList<Conta> accountList = new ArrayList<>();
+    private String name;
+    private int userID;
+    private boolean hasCA = false;
+    private boolean hasSA = false;
+    private boolean hasIA = false;
     
     
-    public Usuario(String nome, Long idDoUsuario) {
-        this.nome = nome;
-        this.idDoUsuario = idDoUsuario;
-        // Ao criarmos contaCorrente temos o IdUsuario da Conta e do Usuario
-        // this.contaCorrente = new ContaCorrente(idDoUsuario, idDoUsuario, 0);
+    public Usuario(String name, int userID) {
+        this.name = name;
+        this.userID = userID;
     }
 
-    public String getNome() {
-        return nome;
+    private String getName() {
+        return name;
     }
 
-    public Long getIdDoUSuario() {
-        return idDoUsuario;
+    private void creatingCA() {
+        hasCA = true;
     }
 
-    public boolean getTemCC() {
-        return temCC;
+    private void creatingSA() {
+        hasSA = true;
     }
 
-    public boolean getTemCP() {
-        return temCP;
+    private void creatingIA() {
+        hasIA = true;
     }
 
-    public boolean getTemCI() {
-        return temCI;
+    @Override
+    public String toString() {
+        return "| ID: "+this.userID+" | Usuário: "+this.name+" |";
     }
-
-
+    
+    public void getAccounts() {
+        System.out.println(String.format("Contas do Usuário: %s", name));
+        accountList.forEach((account) -> {
+            System.out.println(account);
+        });
+    }
 }
