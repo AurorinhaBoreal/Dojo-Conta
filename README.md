@@ -23,7 +23,7 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
     - Consulta do saldo de uma das contas.
     - Consulta do saldo total das contas.
 
-# Requisitos Específicos por Tipo de Conta
+# 🔎 Requisitos Específicos por Tipo de Conta
 
 - Para a conta de investimento:
     - Só pode ser aberta com depósito inicial de R$ 1000,00.
@@ -50,7 +50,6 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 - Será considerado um plus se houver testes unitários para validar o comportamento das classes.
     
 
-    
 ## Agora vamos testar nossa aplicação: 
     - Crie um usuario
     - Adicione uma conta corrente
