@@ -5,10 +5,13 @@ import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
 
 import java.util.Date;
+import java.util.ArrayList;
+
 
 public class Usuario {
+    private ArrayList<Conta> accountList = new ArrayList<>();
     private String nome;
-    private Long idDoUsuario;
+    private int idUsuario;
     private boolean temCC = false;
     private boolean temCP = false;
     private boolean temCI = false;
@@ -18,32 +21,20 @@ public class Usuario {
 
     private Conta contaPoupanca;
 
+    
+    public Usuario(String nome, int idUsuario) {
 
-    public Usuario(String nome, Long idDoUsuario) {
         this.nome = nome;
-        this.idDoUsuario = idDoUsuario;
-        // Ao criarmos contaCorrente temos o IdUsuario da Conta e do Usuario
-        // this.contaCorrente = new ContaCorrente(idDoUsuario, idDoUsuario, 0);
+        this.idUsuario = idUsuario;
     }
 
-    public String getNome() {
+    private String getNome() {
         return nome;
     }
 
-    public Long getIdDoUSuario() {
-        return idDoUsuario;
-    }
-
-    public boolean getTemCC() {
-        return temCC;
-    }
-
-    public boolean getTemCP() {
-        return temCP;
-    }
-
-    public boolean getTemCI() {
-        return temCI;
+    @Override
+    public String toString() {
+        return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
     }
 
     public Conta criarContaCorrente(Long idConta) {
@@ -51,7 +42,7 @@ public class Usuario {
             System.out.println("O usuário já possui uma conta corrente.");
             return null;
         } else {
-            contaCorrente = new ContaCorrente(idConta, idDoUsuario);
+            contaCorrente = new ContaCorrente(idConta);
             temCC = true;
             return contaCorrente;
         }
@@ -62,7 +53,7 @@ public class Usuario {
             System.out.println("O usuário já possui uma conta poupança.");
             return null;
         } else {
-            contaPoupanca = new ContaPoupanca(idConta, idDoUsuario, depositoInicial, dataAbertura);
+            contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
             temCP = true;
             return contaPoupanca;
         }
@@ -73,10 +64,17 @@ public class Usuario {
             System.out.println("O usuário já possui uma conta de investimento.");
             return null;
         } else {
-            contaInvestimento = new ContaInvestimento(idConta, idDoUsuario, depositoInicial, dataAbertura);
+            contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
             temCI = true;
             return contaInvestimento;
         }
     }
-}
+    public void getAccounts() {
+        System.out.println(String.format("Contas do Usuário: %s", nome));
+        accountList.forEach((account) -> {
+            System.out.println(account);
+        });
+        }
+    }
+
 

@@ -5,7 +5,7 @@ import com.dojo.account.interfaces.ContasMetodos;
 public abstract class Conta implements ContasMetodos {
     private Long idConta;
 
-    public Conta(Long idConta, Long idUsuario) {
+    public Conta(Long idConta) {
         this.idConta = idConta;
     }
 
