@@ -14,9 +14,7 @@ public class ContaInvestimento extends Conta{
         super(idConta, idUsuario);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
-        System.out.println("Teste");
     }
-
 
     @Override
     public String consultarSaldo() {
