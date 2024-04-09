@@ -32,7 +32,7 @@ public class Usuario {
         return "| ID: " + this.idUsuario + " | Usuario: " + this.nome + " |";
     }
 
-    public Conta criarContaCorrente(Long idConta) {
+    public Conta criarContaCorrente(int idConta) {
         if (temCC) {
             System.out.println("O usuário já possui uma conta corrente.");
             return null;
@@ -44,7 +44,7 @@ public class Usuario {
         }
     }
 
-    public Conta criarContaPoupanca(Long idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCP) {
             System.out.println("O usuário já possui uma conta poupança.");
             return null;
@@ -56,7 +56,7 @@ public class Usuario {
         }
     }
 
-    public Conta criarContaInvestimento(Long idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCI) {
             System.out.println("O usuário já possui uma conta de investimento.");
             return null;
@@ -68,14 +68,12 @@ public class Usuario {
         }
     }
 
-    public void removerConta(Long idConta) {
+    public void removerConta(int idConta) {
         accountList.forEach((account) ->{//método pra buscar na lista
-            Long idBuscado = accountList.get(accountList.indexOf(account)).getIdConta();
-            if(idBuscado.equals(idConta)) {
-                accountList.remove(account);
+            int idBuscado = accountList.get(accountList.indexOf(account)).getIdConta();
+            if(idBuscado == idConta) {
+                accountList.remove(idConta);
             }
-
-
         });
     }
 

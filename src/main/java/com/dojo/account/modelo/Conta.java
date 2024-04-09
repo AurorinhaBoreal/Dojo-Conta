@@ -3,17 +3,17 @@ package com.dojo.account.modelo;
 import com.dojo.account.interfaces.ContasMetodos;
 
 public abstract class Conta implements ContasMetodos {
-    private Long idConta;
+    private int idConta;
 
-    public Conta(Long idConta) {
+    public Conta(int idConta) {
         this.idConta = idConta;
     }
 
-    public Long getIdConta() {
+    public int getIdConta() {
         return idConta;
     }
 
-    public void setIdConta(Long idConta) {
+    public void setIdConta(int idConta) {
         this.idConta = idConta;
     }
 
