@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Usuario {
     private ArrayList<Conta> accountList = new ArrayList<>();
-    private String nome;
     private int idUsuario;
+    private String nome;
     private boolean temCC = false;
     private boolean temCP = false;
     private boolean temCI = false;
@@ -23,9 +23,8 @@ public class Usuario {
 
     
     public Usuario(String nome, int idUsuario) {
-
-        this.nome = nome;
         this.idUsuario = idUsuario;
+        this.nome = nome;
     }
 
     private String getNome() {
@@ -37,7 +36,7 @@ public class Usuario {
         return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
     }
 
-    public Conta criarContaCorrente(Long idConta) {
+    public Conta criarContaCorrente(int idConta) {
         if (temCC) {
             System.out.println("O usuário já possui uma conta corrente.");
             return null;
@@ -48,7 +47,7 @@ public class Usuario {
         }
     }
 
-    public Conta criarContaPoupanca(Long idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCP) {
             System.out.println("O usuário já possui uma conta poupança.");
             return null;
@@ -59,7 +58,7 @@ public class Usuario {
         }
     }
 
-    public Conta criarContaInvestimento(Long idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCI) {
             System.out.println("O usuário já possui uma conta de investimento.");
             return null;
