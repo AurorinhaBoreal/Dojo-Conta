@@ -3,6 +3,8 @@ package com.dojo.account;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Date;
+import java.util.Calendar;
 import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
@@ -38,12 +40,19 @@ public class AccountApplication {
 				usuarioMenu();
 				break;
 			case 3:
-				ContaCorrente cc = new ContaCorrente(2);
-				cc.deposito(500);
-				System.out.println(cc.consultarSaldo());
-				cc.saque(300);
+				ContaInvestimento ci = new ContaInvestimento(2,2960, Ontem());
+				ci.deposito(500);
+				System.out.println(ci.consultarSaldo());
+				ci.saque(300);
 				System.out.println("Conta após saque");
-				System.out.println(cc.consultarSaldo());
+				System.out.println(ci.consultarSaldo());
+
+				// ContaCorrente cc = new ContaCorrente(2);
+				// cc.deposito(500);
+				// System.out.println(cc.consultarSaldo());
+				// cc.saque(300);
+				// System.out.println("Conta após saque");
+				// System.out.println(cc.consultarSaldo());
 				usuarioMenu();
 				break;
 			case 4:
@@ -63,6 +72,16 @@ public class AccountApplication {
 				usuarioMenu();
 				break;
 		}
+	}
+
+	private static Date Ontem() {
+
+		Calendar calendar = Calendar.getInstance();
+
+		calendar.add(Calendar.DAY_OF_YEAR, -1);
+
+		return calendar.getTime();
+
 	}
 
 	public static void criarUsuario() {
