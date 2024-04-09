@@ -107,15 +107,15 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 - (-) -> Atributo
 - (->) -> Método
 ## Usuario 
-    - Long idUsuario
+    - int idUsuario
     - String name
     - boolean hasCA
     - boolean hasIA
     - boolean hasSA
 
 ## Conta (Classe Abstrata)
-    - Long idConta
-    - Long idUsuario
+    - int idConta
+    - int idUsuario
     - double saldo
     -> Saque() - Override caso Necessário
     -> Deposito() - Override caso Necessário
