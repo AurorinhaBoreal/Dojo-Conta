@@ -25,7 +25,7 @@ public class AccountApplication {
 	public static void usuarioMenu(Usuario usuario) {
 		System.out.println("Bem vindo! Que ação deseja executar?");
 		System.out.println("| 1 - Se Registrar | 2 - Criar Conta |\n"
-		+"| 3 - Sacar | 4 - Depositar |\n| 5 - Transferir | 6 - Apagar Conta");
+		+"| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
 
 		action = scanner.nextInt();
 		scanner.nextLine();
@@ -49,10 +49,13 @@ public class AccountApplication {
 				usuarioMenu(usuario);
 				break;
 			case 5:
+				verSaldo(usuario);
+				usuarioMenu(usuario);
+			case 6:
 				// transferir(usuario);
 				usuarioMenu(usuario);
 				break;
-			case 6:
+			case 7:
 				// deleteAccount(usuario);
 				usuarioMenu(usuario);
 				break;
@@ -177,6 +180,23 @@ public class AccountApplication {
 			} 
 		});
 		desiredAccount[0].deposito(desiredDeposit);
+		System.out.println(desiredAccount[0].consultarSaldo());
+	}
+
+	private static void verSaldo(Usuario usuario) {
+		int desiredId;
+		Conta[] desiredAccount = new Conta[1];
+		System.out.println("Informe o ID conta deseja depositar:");
+		usuario.getAccounts();
+		desiredId = scanner.nextInt();
+
+		System.out.println("Você escolheu o ID: "+desiredId);
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == desiredId) {
+				desiredAccount[0] = account;
+			} 
+		});
+
 		System.out.println(desiredAccount[0].consultarSaldo());
 	}
 }
