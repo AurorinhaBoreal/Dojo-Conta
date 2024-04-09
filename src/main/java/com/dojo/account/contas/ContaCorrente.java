@@ -4,9 +4,15 @@ import com.dojo.account.modelo.Conta;
 
 public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
+    private double saldo = 0;
 
     public ContaCorrente(Long idConta, Long idUsuario) {
         super(idConta, idUsuario);
+    }
+
+    @Override
+    public String consultarSaldo() {
+        return "Seu saldo é "+saldo;
     }
 
     @Override

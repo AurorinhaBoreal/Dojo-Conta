@@ -8,6 +8,7 @@ public class ContaInvestimento extends Conta{
     private final double taxaRendimento = 0.10;
     private double depositoInicial;
     private Date dataAbertura;
+    private double saldo = 0;
         
     public ContaInvestimento(Long idConta, Long idUsuario, double depositoInicial, Date dataAbertura) {
         super(idConta, idUsuario);
@@ -15,6 +16,11 @@ public class ContaInvestimento extends Conta{
         this.dataAbertura = dataAbertura;
     }
 
+    @Override
+    public String consultarSaldo() {
+        return "Seu saldo é "+saldo;
+    }
+    
     @Override
     public void deposito(double valor) {
         if(saldo == 0){

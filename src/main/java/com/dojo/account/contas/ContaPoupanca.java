@@ -8,12 +8,17 @@ public class ContaPoupanca extends Conta {
     private final double taxaRendimento = 0.05;
     private double depositoInicial;
     private Date dataAbertura;
-
+    private double saldo = 0;
     
     public ContaPoupanca(Long idConta, Long idUsuario, double depositoInicial, Date dataAbertura) {
         super(idConta, idUsuario);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
+    }
+
+    @Override
+    public String consultarSaldo() {
+        return "Seu saldo é "+saldo;
     }
 
     @Override
