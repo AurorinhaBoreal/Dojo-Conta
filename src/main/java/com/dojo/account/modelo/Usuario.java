@@ -4,9 +4,8 @@ import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
 
-import java.util.Date;
 import java.util.ArrayList;
-
+import java.util.Date;
 
 public class Usuario {
     private ArrayList<Conta> accountList = new ArrayList<>();
@@ -16,13 +15,11 @@ public class Usuario {
     private boolean temCP = false;
     private boolean temCI = false;
     private Conta contaCorrente;
-
     private Conta contaInvestimento;
-
     private Conta contaPoupanca;
 
-    
     public Usuario(String nome, int idUsuario) {
+        this.nome = nome;
         this.idUsuario = idUsuario;
         this.nome = nome;
     }
@@ -33,7 +30,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
+        return "| ID: " + this.idUsuario + " | Usuario: " + this.nome + " |";
     }
 
     public Conta criarContaCorrente(int idConta) {
@@ -43,9 +40,12 @@ public class Usuario {
         } else {
             contaCorrente = new ContaCorrente(idConta);
             temCC = true;
+            System.out.println("Essa é a CC:"+contaCorrente);
+            accountList.add(contaCorrente);
             return contaCorrente;
         }
     }
+
 
     public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
         if (temCP) {
@@ -54,6 +54,8 @@ public class Usuario {
         } else {
             contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
             temCP = true;
+            System.out.println("Essa é a CP:"+contaPoupanca);
+            accountList.add(contaPoupanca);
             return contaPoupanca;
         }
     }
@@ -65,15 +67,29 @@ public class Usuario {
         } else {
             contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
             temCI = true;
+            System.out.println("Essa é a CI:"+contaInvestimento);
+            accountList.add(contaInvestimento);
             return contaInvestimento;
         }
     }
-    public void getAccounts() {
-        System.out.println(String.format("Contas do Usuário: %s", nome));
-        accountList.forEach((account) -> {
-            System.out.println(account);
-        });
+
+    public void removerConta(int idConta) {
+        boolean removed = accountList.removeIf(account -> account.getIdConta() == idConta);
+        if (removed) {
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
         }
     }
 
+    public ContaInvestimento getContaInvestimento() {
+        return (ContaInvestimento) contaInvestimento;
+    }
 
+    public void getAccounts() {
+        System.out.println("Contas do Usuario:" + nome);
+        accountList.forEach((account) -> {
+            System.out.println(account);
+        });
+    }
+}

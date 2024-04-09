@@ -9,10 +9,25 @@ public abstract class Conta implements ContasMetodos {
         this.idConta = idConta;
     }
 
+    public int getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(int idConta) {
+        this.idConta = idConta;
+    }
+
     public abstract String consultarSaldo();
 
     public abstract void saque(double quantiaSaque);
 
     public abstract void deposito(double valor);
+
+    public abstract void transferir(double valor, Conta conta);
+
+
+    }
+
+
     
-}
+

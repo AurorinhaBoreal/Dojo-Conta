@@ -15,6 +15,11 @@ public class ContaCorrente extends Conta{
         return "Seu saldo é "+saldo;
     }
 
+    @Override
+    public String toString() {
+        return "Conta Corrente | ID: " + getIdConta();
+    }
+
 
     @Override
     public void deposito(double valor){
@@ -23,6 +28,11 @@ public class ContaCorrente extends Conta{
         }
         this.saldo += valor;
         System.out.println("Deposito efetuado com Sucesso!!");
+    }
+
+    @Override
+    public void transferir(double valor, Conta conta) {
+
     }
 
     @Override

@@ -17,10 +17,18 @@ public class ContaInvestimento extends Conta{
     }
 
     @Override
+    public String toString() {
+        return "Conta Investimento | ID: " + getIdConta();
+    }
+
+    @Override
     public String consultarSaldo() {
         return "Seu saldo é "+saldo;
     }
     
+    @Override
+    public void transferir(double valor, Conta conta) {};
+
     @Override
     public void deposito(double valor) {
         if(saldo == 0){
@@ -30,7 +38,7 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public void saque(double valor) {
-    Long dias = 0L;
+        Long dias = 0L;
 
         if (dataAbertura != null){
             Date dataAtual = new Date();
