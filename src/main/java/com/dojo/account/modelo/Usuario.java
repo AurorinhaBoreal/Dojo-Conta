@@ -4,9 +4,8 @@ import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
 
-import java.util.Date;
 import java.util.ArrayList;
-
+import java.util.Date;
 
 public class Usuario {
     private ArrayList<Conta> accountList = new ArrayList<>();
@@ -16,16 +15,10 @@ public class Usuario {
     private boolean temCP = false;
     private boolean temCI = false;
     private Conta contaCorrente;
-
     private Conta contaInvestimento;
-
     private Conta contaPoupanca;
 
-
-
-    
     public Usuario(String nome, int idUsuario) {
-
         this.nome = nome;
         this.idUsuario = idUsuario;
     }
@@ -36,9 +29,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
+        return "| ID: " + this.idUsuario + " | Usuario: " + this.nome + " |";
     }
-    
 
     public Conta criarContaCorrente(Long idConta) {
         if (temCC) {
@@ -75,12 +67,26 @@ public class Usuario {
             return contaInvestimento;
         }
     }
+
+    public void removerConta(Long idConta) {
+        accountList.forEach((account) ->{//método pra buscar na lista
+            Long idBuscado = accountList.get(accountList.indexOf(account)).getIdConta();
+            if(idBuscado.equals(idConta)) {
+                accountList.remove(account);
+            }
+
+
+        });
+    }
+
+    public ContaInvestimento getContaInvestimento() {
+        return (ContaInvestimento) contaInvestimento;
+    }
+
     public void getAccounts() {
-        System.out.println(String.format("Contas do Usuário: %s", nome));
+        System.out.println("Contas do Usuario:" + nome);
         accountList.forEach((account) -> {
             System.out.println(account);
         });
-        }
     }
-
-
+}

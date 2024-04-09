@@ -9,6 +9,14 @@ public abstract class Conta implements ContasMetodos {
         this.idConta = idConta;
     }
 
+    public Long getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
+    }
+
     public abstract String consultarSaldo();
 
     public abstract void saque(double quantiaSaque);

@@ -45,6 +45,10 @@ public class ContaPoupanca extends Conta {
     public void transferir(double valor, Conta conta) {
 
     }
+    @Override
+    public String toString() {
+        return "Conta Poupança | ID: " + getIdConta();
+    }
 
     public void rendimento() {
         if (dataAbertura != null){
