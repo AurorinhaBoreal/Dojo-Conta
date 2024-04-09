@@ -3,6 +3,9 @@ package com.dojo.account;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.dojo.account.contas.ContaCorrente;
+import com.dojo.account.contas.ContaInvestimento;
+import com.dojo.account.contas.ContaPoupanca;
 import com.dojo.account.modelo.Usuario;
 
 import java.util.Scanner;
@@ -35,7 +38,12 @@ public class AccountApplication {
 				usuarioMenu();
 				break;
 			case 3:
-				// sacar();
+				ContaCorrente cc = new ContaCorrente(2);
+				cc.deposito(500);
+				System.out.println(cc.consultarSaldo());
+				cc.saque(300);
+				System.out.println("Conta após saque");
+				System.out.println(cc.consultarSaldo());
 				usuarioMenu();
 				break;
 			case 4:
