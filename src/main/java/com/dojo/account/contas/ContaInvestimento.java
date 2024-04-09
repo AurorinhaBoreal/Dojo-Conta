@@ -14,7 +14,9 @@ public class ContaInvestimento extends Conta{
         super(idConta);
         this.depositoInicial = depositoInicial;
         this.dataAbertura = dataAbertura;
+
     }
+
 
     @Override
     public String consultarSaldo() {
@@ -26,6 +28,11 @@ public class ContaInvestimento extends Conta{
         if(saldo == 0){
             saldo = depositoInicial;
         }
+    }
+
+    @Override
+    public void transferir(double valor, Conta conta) {
+
     }
 
     @Override
@@ -46,6 +53,13 @@ public class ContaInvestimento extends Conta{
                 System.out.println("Saque efetuado com Sucesso!!");
             }
         }
+    }
+
+//    Implemente um método em Usuario que fecha uma conta: - O método deve receber uma conta
+//        do tipo poupança ou investimento, não pode receber um tipo conta corrente
+//        - O método saca todo o dinheiro da conta e fecha a mesma, passando o saldo para conta corrente
+    public void deletarConta(double valor, ContaInvestimento contaInvestimento) {
+
     }
 
 

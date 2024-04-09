@@ -41,6 +41,11 @@ public class ContaPoupanca extends Conta {
         System.out.println("Depósito efetuado com Sucesso!!");
     }
 
+    @Override
+    public void transferir(double valor, Conta conta) {
+
+    }
+
     public void rendimento() {
         if (dataAbertura != null){
             Date dataAtual = new Date();

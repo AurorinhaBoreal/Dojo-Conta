@@ -26,6 +26,11 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
+    public void transferir(double valor, Conta conta) {
+
+    }
+
+    @Override
     public void saque(double valor){
         if(valor <= 0){
             throw new IllegalArgumentException("Valor inválido");

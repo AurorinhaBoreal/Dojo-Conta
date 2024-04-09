@@ -21,6 +21,8 @@ public class Usuario {
 
     private Conta contaPoupanca;
 
+
+
     
     public Usuario(String nome, int idUsuario) {
 
@@ -36,6 +38,7 @@ public class Usuario {
     public String toString() {
         return "| ID: "+this.idUsuario+" | Usuário: "+this.nome+" |";
     }
+    
 
     public Conta criarContaCorrente(Long idConta) {
         if (temCC) {
@@ -44,6 +47,7 @@ public class Usuario {
         } else {
             contaCorrente = new ContaCorrente(idConta);
             temCC = true;
+            accountList.add(contaCorrente);
             return contaCorrente;
         }
     }
@@ -55,6 +59,7 @@ public class Usuario {
         } else {
             contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
             temCP = true;
+            accountList.add(contaPoupanca);
             return contaPoupanca;
         }
     }
@@ -66,6 +71,7 @@ public class Usuario {
         } else {
             contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
             temCI = true;
+            accountList.add(contaInvestimento);
             return contaInvestimento;
         }
     }

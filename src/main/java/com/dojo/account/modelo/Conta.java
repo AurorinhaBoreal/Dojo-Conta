@@ -14,5 +14,12 @@ public abstract class Conta implements ContasMetodos {
     public abstract void saque(double quantiaSaque);
 
     public abstract void deposito(double valor);
+
+    public abstract void transferir(double valor, Conta conta);
+
+
+    }
+
+
     
-}
+
