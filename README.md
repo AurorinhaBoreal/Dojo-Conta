@@ -108,10 +108,10 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 - (->) -> Método
 ## Usuario 
     - Long idUsuario
-    - String Name
-    - boolean temCC
-    - boolean temCI
-    - boolean temCP
+    - String name
+    - boolean hasCA
+    - boolean hasIA
+    - boolean hasSA
 
 ## Conta (Classe Abstrata)
     - Long idConta
