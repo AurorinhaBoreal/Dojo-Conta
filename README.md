@@ -1,9 +1,11 @@
-Sistema de controle de contas
+# ⚙️ Sistema de Controle de Contas
 
 O desafio não representa um sistema real, apenas simula condições para exercitar a prática do POO
 Tendo isso em vista, o desafio deve conter o uso de herança, implementação de interfaces e classes abstratas bem como uso de polimorfismo!
 
-# Usuário.
+<br>
+
+# 👤 Usuário.
 
 - O sistema deve permitir a criação de um usuário.
 - Cada usuário pode ter até três contas de tipos diferentes vinculadas
@@ -11,7 +13,9 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
     - uma conta investimento
     - uma conta poupança
 
-# Operações nas Contas:
+<br>
+
+# 🧾 Operações nas Contas:
 
 - O sistema deve permitir as seguintes operações nas contas vinculadas ao usuário:
     - Depósito de valores.
@@ -19,7 +23,7 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
     - Consulta do saldo de uma das contas.
     - Consulta do saldo total das contas.
 
-# Requisitos Específicos por Tipo de Conta
+# 🔎 Requisitos Específicos por Tipo de Conta
 
 - Para a conta de investimento:
     - Só pode ser aberta com depósito inicial de R$ 1000,00.
@@ -34,7 +38,7 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
     - Permite saques, mas não pode ficar negativa.
     - Ao visualizar o saldo, o valor deve ser acrescido de 5% para cada dia desde o primeiro depósito.
 
-# Regras Adicionais:
+## Regras Adicionais:
 
 - Para fechar/deletar uma conta, o saldo deve ser igual a zero.
 - Implemente um método em Usuario que fecha uma conta:
@@ -46,8 +50,7 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 - Será considerado um plus se houver testes unitários para validar o comportamento das classes.
     
 
-    
-# Agora vamos testar nossa aplicação: 
+## Agora vamos testar nossa aplicação: 
     - Crie um usuario
     - Adicione uma conta corrente
     - Adicione saldo a conta
@@ -61,7 +64,45 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 
     vamos ter que ter 5 classes
 
-# Estrutura do Projeto
+<br>
+
+# 📖 User Stories
+
+### [US001] Como Cliente, quero poder criar um usuário para utilizar o sistema.
+
+### [US002] Como Usuário, quero poder criar uma conta de cada tipo vinculadas a mim.
+
+### [US002-1] Como Usuário, quero poder abrir minha Conta Investimento
+
+### [US002-2] Como Usuário, quero poder abrir minha Conta Corrente
+
+### [US002-3] Como Usuário, quero poder abrir minha Conta Popupança
+
+### [US003-1] Como Usuário utilizando a Conta Investimento, quero poder depositar dinheiro na mesma
+
+### [US003-2] Como Usuário utilizando a Conta Investimento, quero poder sacar o dinheiro da mesma
+
+### [US003-3] Como Usuário utilizando a Conta de Investimento, quero pdoer visualizar o saldo acrescido
+
+### [US004-1] Como Usuário utilizando a Conta Corrente, quero poder depositar dinheiro na Conta
+
+### [US004-2] Como Usuário utilizando a Conta Corrente, quero poder realizar saques e ficar negativado
+
+### [US004-3] Como Usuário utilizando a Conta Corrente, quero visualizar o meu saldo sem acrescimo
+
+### [US005-1] Como Usuário utilizando a Conta Poupança, quero poder realizar depositos
+
+### [US005-2] Como Usuário utilizando a Conta Poupança, quero realizar saques
+
+### [US005-3] Como Usuário utilizando a Conta Popuança, quero poder visualizar o saldo acrescido
+
+### [US006] Como Usuário vinculado a uma Conta Corrente, quero poder deletar uma conta poupança ou de investimento
+
+### [US007] Como Usuário vinculado a mais de uma conta, quero poder transferir saldo entre elas.
+
+<br>
+
+# 🏗️ Estrutura Inicial do Projeto
 
 - (-) -> Atributo
 - (->) -> Método

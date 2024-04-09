@@ -4,20 +4,18 @@ import com.dojo.account.contas.ContaCorrente;
 
 public class Usuario {
     private String nome;
-    private Long idDoUSuario;
-    private boolean temCC;
-    private boolean temCP;
-    private boolean temCI;
+    private Long idDoUsuario;
+    private boolean temCC = false;
+    private boolean temCP = false;
+    private boolean temCI = false;
     private Conta contaCorrente;
     
     
-    public Usuario(String nome, Long idDoUSuario, boolean temCC, boolean temCP, boolean temCI) {
+    public Usuario(String nome, Long idDoUsuario) {
         this.nome = nome;
-        this.idDoUSuario = idDoUSuario;
-        this.temCC = false;
-        this.temCP = false;
-        this.temCI = false;
-        this.contaCorrente = new ContaCorrente(idDoUSuario, idDoUSuario, 0);
+        this.idDoUsuario = idDoUsuario;
+        // Ao criarmos contaCorrente temos o IdUsuario da Conta e do Usuario
+        // this.contaCorrente = new ContaCorrente(idDoUsuario, idDoUsuario, 0);
     }
 
     public String getNome() {
@@ -25,7 +23,7 @@ public class Usuario {
     }
 
     public Long getIdDoUSuario() {
-        return idDoUSuario;
+        return idDoUsuario;
     }
 
     public boolean getTemCC() {

@@ -4,13 +4,20 @@ import com.dojo.account.modelo.Conta;
 
 public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
+    private double saldo = 0;
 
-    public ContaCorrente(Long idConta, Long idUsuario, double saldo) {
-        super(idConta, idUsuario, saldo);
+    public ContaCorrente(Long idConta, Long idUsuario) {
+        super(idConta, idUsuario);
     }
 
     @Override
-    public void depositar(double valor){
+    public String consultarSaldo() {
+        return "Seu saldo é "+saldo;
+    }
+
+
+    @Override
+    public void deposito(double valor){
         if(valor <= 0){
             throw new IllegalArgumentException("Valor inválido");
         }
@@ -19,7 +26,7 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    public void sacar(double valor){
+    public void saque(double valor){
         if(valor <= 0){
             throw new IllegalArgumentException("Valor inválido");
         }if(this.saldo - valor < limiteNegativo){
