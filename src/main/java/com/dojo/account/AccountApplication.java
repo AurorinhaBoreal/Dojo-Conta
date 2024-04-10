@@ -12,15 +12,18 @@ import java.util.Scanner;
 public class AccountApplication {
 	static Scanner scanner = new Scanner(System.in);
 	static int action = -1;
+
 	public static void main(String[] args) {
 		Usuario usuario = new Usuario("Aurora", 23);
 		usuarioMenu(usuario);
-	};
+	}
+
+	;
 
 	public static void usuarioMenu(Usuario usuario) {
 		System.out.println("Bem vindo! Que ação deseja executar?");
 		System.out.println("| 1 - Se Registrar | 2 - Criar Conta |\n"
-				+"| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
+				+ "| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
 
 		action = scanner.nextInt();
 		scanner.nextLine();
@@ -47,7 +50,7 @@ public class AccountApplication {
 				verSaldo(usuario);
 				usuarioMenu(usuario);
 			case 6:
-				// transferir(usuario);
+				transferir(usuario);
 				usuarioMenu(usuario);
 				break;
 			case 7:
@@ -147,7 +150,7 @@ public class AccountApplication {
 		System.out.println("Informe quanto você deseja sacar:");
 		desiredWithdraw = scanner.nextInt();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
@@ -168,7 +171,7 @@ public class AccountApplication {
 		System.out.println("Informe quanto você deseja depositar:");
 		desiredDeposit = scanner.nextDouble();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
@@ -185,7 +188,7 @@ public class AccountApplication {
 		usuario.getAccounts();
 		desiredId = scanner.nextInt();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
@@ -193,5 +196,36 @@ public class AccountApplication {
 		});
 
 		System.out.println(desiredAccount[0].consultarSaldo());
+	}
+
+	public static void transferir(Usuario usuario) {
+		int desiredId;
+		int fromAccountId, toAccountId;
+		double amount = 0;
+
+
+		System.out.println("Informe o ID da conta de origem:");
+		fromAccountId = scanner.nextInt();
+
+		System.out.println("Informe o ID da conta de destino:");
+		toAccountId = scanner.nextInt();
+
+		System.out.println("Informe o valor a ser transferido:");
+		amount = scanner.nextDouble();
+
+//		Conta fromAccount = foreach de busca
+//		Conta toAccount = foreach também
+
+//		if (fromAccount == null || toAccount == null) {
+//			System.out.println("Conta de origem ou conta de destino não encontrada.");
+//			return;
+//		}
+//
+//		if (fromAccount.getSaldo() < amount) {
+//			System.out.println("Saldo insuficiente na conta de origem.");
+//			return;
+//		}
+//
+//
 	}
 }
