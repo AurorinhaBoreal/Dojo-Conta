@@ -30,7 +30,7 @@ public class ContaInvestimento extends Conta{
 
         return "Seu saldo é "+this.saldo;
     }
-    
+
     @Override
     public void transferir(double valor, Conta conta) {};
 
@@ -50,3 +50,4 @@ public class ContaInvestimento extends Conta{
         System.out.println("Saque efetuado com Sucesso!!");
     }
 }
+

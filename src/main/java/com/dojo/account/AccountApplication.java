@@ -2,9 +2,8 @@ package com.dojo.account;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.time.LocalDate;
-import java.util.Calendar;
+
 import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
@@ -12,11 +11,12 @@ import com.dojo.account.modelo.Conta;
 import com.dojo.account.modelo.Usuario;
 
 import java.util.Scanner;
-@SpringBootApplication
 public class AccountApplication {
 	static Scanner scanner = new Scanner(System.in);
 	static int action = -1;
+
 	public static void main(String[] args) {
+
 		SpringApplication.run(AccountApplication.class, args);
 		Usuario usuario = new Usuario("Aurora", 23);
 		usuarioMenu(usuario);
@@ -25,7 +25,8 @@ public class AccountApplication {
 	public static void usuarioMenu(Usuario usuario) {
 		System.out.println("Bem vindo! Que ação deseja executar?");
 		System.out.println("| 1 - Se Registrar | 2 - Criar Conta |\n"
-		+"| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
+				+ "| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
+
 
 		action = scanner.nextInt();
 		scanner.nextLine();
@@ -42,7 +43,7 @@ public class AccountApplication {
 				break;
 			case 3:
 				sacar(usuario);
-				usuarioMenu(usuario);				
+				usuarioMenu(usuario);
 				break;
 			case 4:
 				depositar(usuario);
@@ -52,7 +53,7 @@ public class AccountApplication {
 				verSaldo(usuario);
 				usuarioMenu(usuario);
 			case 6:
-				// transferir(usuario);
+				transferir(usuario);
 				usuarioMenu(usuario);
 				break;
 			case 7:
@@ -82,7 +83,7 @@ public class AccountApplication {
 		System.out.println("Que tipo de conta deseja criar?");
 		System.out.println("| 1 - Conta Corrente (CC) | 2 - Conta Poupança (CP) | 3 - Conta Investimento (CI) |");
 		accountType = scanner.nextInt();
-		
+
 		boolean result = verifyAccount(accountType, usuario);
 		if (result == false) {
 			System.out.println("Você ja possui uma conta desse tipo!");
@@ -96,6 +97,7 @@ public class AccountApplication {
 		System.out.println("Para a criação de Conta Investimento - Min: 1000");
 
 		desiredDeposit = scanner.nextDouble();
+
 
 		boolean balanceResult = balanceVerify(accountType, desiredDeposit);
 		if (balanceResult == false) {
@@ -164,11 +166,11 @@ public class AccountApplication {
 		System.out.println("Informe quanto você deseja sacar:");
 		desiredWithdraw = scanner.nextInt();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
-			} 
+			}
 		});
 		desiredAccount[0].saque(desiredWithdraw);
 		System.out.println(desiredAccount[0].consultarSaldo());
@@ -185,11 +187,11 @@ public class AccountApplication {
 		System.out.println("Informe quanto você deseja depositar:");
 		desiredDeposit = scanner.nextDouble();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
-			} 
+			}
 		});
 		desiredAccount[0].deposito(desiredDeposit);
 		System.out.println(desiredAccount[0].consultarSaldo());
@@ -202,18 +204,45 @@ public class AccountApplication {
 		usuario.getAccounts();
 		desiredId = scanner.nextInt();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
-		
+		System.out.println("Você escolheu o ID: " + desiredId);
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
-			} 
+			}
 		});
 
 		System.out.println(desiredAccount[0].consultarSaldo());
 	}
 
+	public static void transferir(Usuario usuario) {
+		int desiredId;
+		int fromAccountId, toAccountId;
+		double amount = 0;
 
+
+		System.out.println("Informe o ID da conta de origem:");
+		fromAccountId = scanner.nextInt();
+
+		System.out.println("Informe o ID da conta de destino:");
+		toAccountId = scanner.nextInt();
+
+		System.out.println("Informe o valor a ser transferido:");
+		amount = scanner.nextDouble();
+
+//		Conta fromAccount = foreach de busca
+//		Conta toAccount = foreach também
+
+//		if (fromAccount == null || toAccount == null) {
+//			System.out.println("Conta de origem ou conta de destino não encontrada.");
+//			return;
+//		}
+//
+//		if (fromAccount.getSaldo() < amount) {
+//			System.out.println("Saldo insuficiente na conta de origem.");
+//			return;
+//		}
+//
+  }
 
 	private static void removerConta(Usuario usuario) {
 		int desiredId;

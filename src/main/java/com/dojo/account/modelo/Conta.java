@@ -26,8 +26,8 @@ public abstract class Conta implements ContasMetodos {
     public abstract void transferir(double valor, Conta conta);
 
 
+    public double getSaldo() {
+        return 0;
     }
-
-
-    
+}
 

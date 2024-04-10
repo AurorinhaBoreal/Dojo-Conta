@@ -104,6 +104,8 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 
 ### ✅ [US008] Como usuário quero uma interface para poder utilizar o sistema
 
+### ✅ [US008] Como usuário quero uma interface para poder utilizar o sistema
+
 <br>
 
 # 🏗️ Estrutura Inicial do Projeto

@@ -53,7 +53,7 @@ public class Usuario {
         return contaPoupanca;
      
     }
-
+  
     public boolean verifyCP() {
         if (temCP == true) {
             return false;
@@ -93,5 +93,9 @@ public class Usuario {
         accountList.forEach((account) -> {
             System.out.println(account.toString());
         });
+    }
+
+    public void transferir() {
+
     }
 }
