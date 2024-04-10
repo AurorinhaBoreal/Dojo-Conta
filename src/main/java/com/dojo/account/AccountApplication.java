@@ -3,7 +3,7 @@ package com.dojo.account;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
@@ -66,16 +66,6 @@ public class AccountApplication {
 		}
 	}
 
-	private static Date AnteOntem() {
-
-		Calendar calendar = Calendar.getInstance();
-
-		calendar.add(Calendar.DAY_OF_YEAR, -2);
-
-		return calendar.getTime();
-
-	}
-
 	private static Usuario criarUsuario() {
 		String userName;
 		System.out.println("Informe o seu primeiro Nome: ");
@@ -107,15 +97,19 @@ public class AccountApplication {
 
 		desiredDeposit = scanner.nextDouble();
 
+		boolean balanceResult = balanceVerify(accountType, desiredDeposit);
+		if (balanceResult == false) {
+			throw new IllegalArgumentException("Deposito Insuficiente para criação da conta desejada!");
+		}
 		switch (accountType) {
 			case 1:
 				usuario.criarContaCorrente(desiredId, desiredDeposit);
 				break;
 			case 2:
-				usuario.criarContaPoupanca(desiredId, desiredDeposit, AnteOntem());
+				usuario.criarContaPoupanca(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
 				break;
 			case 3:
-				usuario.criarContaInvestimento(desiredId, desiredDeposit, AnteOntem());
+				usuario.criarContaInvestimento(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
 				break;
 			default:
 				System.out.println("Opção Inválida!");
@@ -139,6 +133,20 @@ public class AccountApplication {
 				return verifiedCI;	
 		}
 		
+	}
+
+	private static boolean balanceVerify(int accountType, double desiredDeposit) {
+		boolean result;
+		switch (accountType) {
+			case 2:
+				if (desiredDeposit < 50) result = false;
+				else result = true;
+			default:
+				if (desiredDeposit < 1000) result = false;
+				else result = true;
+				break;
+		}
+		return result;
 	}
 
 	private static void sacar(Usuario usuario) {
@@ -198,5 +206,23 @@ public class AccountApplication {
 		});
 
 		System.out.println(desiredAccount[0].consultarSaldo());
+	}
+
+
+
+	private static void removerConta(Usuario usuario) {
+		int desiredId;
+		Conta[] desiredAccount = new Conta[1];
+		System.out.println("Informe o ID da conta que deseja remover:");
+		usuario.getAccounts();
+		desiredId = scanner.nextInt();
+
+		System.out.println("Você escolheu o ID: "+desiredId);
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == desiredId) {
+				desiredAccount[0] = account;
+			} 
+		});
+		usuario.removerConta(desiredId);
 	}
 }

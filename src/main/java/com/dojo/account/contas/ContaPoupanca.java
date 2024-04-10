@@ -1,18 +1,17 @@
 package com.dojo.account.contas;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import com.dojo.account.modelo.Conta;
 
 public class ContaPoupanca extends Conta {
-    private final int minDepositoInicial = 50;
     private final double taxaRendimento = 0.05;
-    private double depositoInicial;
-    private Date dataAbertura;
+    private LocalDate dataAbertura;
     private double saldo = 0;
     
-    public ContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
+    public ContaPoupanca(int idConta, double saldo, LocalDate dataAbertura) {
         super(idConta);
-        this.depositoInicial = depositoInicial;
+        this.saldo = saldo;
         this.dataAbertura = dataAbertura;
     }
 
@@ -34,11 +33,7 @@ public class ContaPoupanca extends Conta {
     
     @Override
     public void deposito(double valor) {
-        if (valor <= 0) {
-            throw new IllegalArgumentException("Valor inválido");    
-        }
         this.saldo += valor;
-        System.out.println("Depósito efetuado com Sucesso!!");
     }
 
     @Override
@@ -52,10 +47,9 @@ public class ContaPoupanca extends Conta {
 
     public void rendimento() {
         if (dataAbertura != null){
-            Date dataAtual = new Date();
-            Long diferenca = dataAtual.getTime() - dataAbertura.getTime();
-            Long dias = diferenca / (1000 * 60 * 60 * 24);
-            this.saldo += this.saldo * taxaRendimento * dias;
+            LocalDate dataAtual = LocalDate.now();
+            Long dias = ChronoUnit.DAYS.between(dataAtual, dataAbertura);
+            this.saldo += (this.saldo * taxaRendimento) * dias;
         }
     }
 }
