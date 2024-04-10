@@ -22,7 +22,6 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public String consultarSaldo() {
-        System.out.println(saldo);
         if (dataAbertura != null){
             LocalDate dataAtual = LocalDate.now();
             Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);

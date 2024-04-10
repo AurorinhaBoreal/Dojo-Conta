@@ -56,7 +56,7 @@ public class AccountApplication {
 				usuarioMenu(usuario);
 				break;
 			case 7:
-				// deleteAccount(usuario);
+				removerConta(usuario);
 				usuarioMenu(usuario);
 				break;
 			default:
@@ -99,7 +99,7 @@ public class AccountApplication {
 
 		boolean balanceResult = balanceVerify(accountType, desiredDeposit);
 		if (balanceResult == false) {
-			throw new IllegalArgumentException("Deposito Insuficiente para criação da conta desejada!");
+			System.out.println("Deposito Insuficiente para criação da conta desejada!");
 		}
 		switch (accountType) {
 			case 1:
@@ -138,15 +138,19 @@ public class AccountApplication {
 	private static boolean balanceVerify(int accountType, double desiredDeposit) {
 		boolean result;
 		switch (accountType) {
+			case 1:
+				if (desiredDeposit < -1) result = false;
+				else result = true;
+				return result;
 			case 2:
 				if (desiredDeposit < 50) result = false;
 				else result = true;
+				return result;
 			default:
 				if (desiredDeposit < 1000) result = false;
 				else result = true;
-				break;
+				return result;
 		}
-		return result;
 	}
 
 	private static void sacar(Usuario usuario) {
@@ -219,11 +223,12 @@ public class AccountApplication {
 		desiredId = scanner.nextInt();
 
 		System.out.println("Você escolheu o ID: "+desiredId);
-		usuario.accountList.forEach((account) -> {
-			if (account.getIdConta() == desiredId) {
-				desiredAccount[0] = account;
-			} 
-		});
-		usuario.removerConta(desiredId);
+		// Método de transferir viria aqui!
+		boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
+        if (removed) {
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
+        }
 	}
 }
