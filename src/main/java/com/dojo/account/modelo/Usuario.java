@@ -5,10 +5,10 @@ import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Usuario {
-    private ArrayList<Conta> accountList = new ArrayList<>();
+    public ArrayList<Conta> accountList = new ArrayList<>();
     private int idUsuario;
     private String nome;
     private boolean temCC = false;
@@ -24,53 +24,58 @@ public class Usuario {
         this.nome = nome;
     }
 
-    private String getNome() {
-        return nome;
-    }
-
     @Override
     public String toString() {
         return "| ID: " + this.idUsuario + " | Usuario: " + this.nome + " |";
     }
 
-    public Conta criarContaCorrente(int idConta) {
-        if (temCC) {
-            System.out.println("O usuário já possui uma conta corrente.");
-            return null;
-        } else {
-            contaCorrente = new ContaCorrente(idConta);
-            temCC = true;
-            System.out.println("Essa é a CC:"+contaCorrente);
-            accountList.add(contaCorrente);
-            return contaCorrente;
-        }
+    public Conta criarContaCorrente(int idConta, double desiredDeposit) {
+        contaCorrente = new ContaCorrente(idConta, desiredDeposit);
+        temCC = true;
+        System.out.println("Sua Conta: "+contaCorrente);
+        accountList.add(contaCorrente);
+        return contaCorrente;
     }
 
-
-    public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
-        if (temCP) {
-            System.out.println("O usuário já possui uma conta poupança.");
-            return null;
-        } else {
-            contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
-            temCP = true;
-            System.out.println("Essa é a CP:"+contaPoupanca);
-            accountList.add(contaPoupanca);
-            return contaPoupanca;
+    public boolean verifyCC() {
+        if (temCC == true) {
+            return false;
         }
+        temCC = true;
+        return true;
     }
 
-    public Conta criarContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
-        if (temCI) {
-            System.out.println("O usuário já possui uma conta de investimento.");
-            return null;
-        } else {
-            contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
-            temCI = true;
-            System.out.println("Essa é a CI:"+contaInvestimento);
-            accountList.add(contaInvestimento);
-            return contaInvestimento;
+    public Conta criarContaPoupanca(int idConta, double depositoInicial, LocalDate dataAbertura) {
+        contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
+        temCP = true;
+        System.out.println("Sua Conta: "+contaPoupanca);
+        accountList.add(contaPoupanca);
+        return contaPoupanca;
+     
+    }
+  
+    public boolean verifyCP() {
+        if (temCP == true) {
+            return false;
         }
+        temCP = true;
+        return true;
+    }
+
+    public Conta criarContaInvestimento(int idConta, double depositoInicial, LocalDate dataAbertura) {
+        contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
+        temCI = true;
+        System.out.println("Sua Conta: "+contaInvestimento);
+        accountList.add(contaInvestimento);
+        return contaInvestimento;
+    }
+
+    public boolean verifyCI() {
+        if (temCI == true) {
+            return false;
+        }
+        temCI = true;
+        return true;
     }
 
     public void removerConta(int idConta) {
@@ -82,14 +87,15 @@ public class Usuario {
         }
     }
 
-    public ContaInvestimento getContaInvestimento() {
-        return (ContaInvestimento) contaInvestimento;
+    public void getAccounts() {
+        System.out.println("Contas do Usuario: " + nome);
+        accountList.toString();
+        accountList.forEach((account) -> {
+            System.out.println(account.toString());
+        });
     }
 
-    public void getAccounts() {
-        System.out.println("Contas do Usuario:" + nome);
-        accountList.forEach((account) -> {
-            System.out.println(account);
-        });
+    public void transferir() {
+
     }
 }
