@@ -199,6 +199,7 @@ public class AccountApplication {
 		desiredId = scanner.nextInt();
 
 		System.out.println("Você escolheu o ID: "+desiredId);
+		
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;

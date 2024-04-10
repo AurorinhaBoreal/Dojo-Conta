@@ -17,6 +17,13 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public String consultarSaldo() {
+
+        if (dataAbertura != null){
+            LocalDate dataAtual = LocalDate.now();
+            Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);
+            this.saldo += (this.saldo * taxaRendimento) * dias;
+        }
+
         return "Seu saldo é "+saldo;
     }
 
@@ -40,17 +47,10 @@ public class ContaPoupanca extends Conta {
     public void transferir(double valor, Conta conta) {
 
     }
+
     @Override
     public String toString() {
         return "Conta Poupança | ID: " + getIdConta();
-    }
-
-    public void rendimento() {
-        if (dataAbertura != null){
-            LocalDate dataAtual = LocalDate.now();
-            Long dias = ChronoUnit.DAYS.between(dataAtual, dataAbertura);
-            this.saldo += (this.saldo * taxaRendimento) * dias;
-        }
     }
 }
 

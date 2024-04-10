@@ -22,6 +22,13 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public String consultarSaldo() {
+        System.out.println(saldo);
+        if (dataAbertura != null){
+            LocalDate dataAtual = LocalDate.now();
+            Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);
+            this.saldo += (this.saldo * taxaRendimento) * dias;
+        }
+
         return "Seu saldo é "+this.saldo;
     }
     
@@ -35,13 +42,12 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public void saque(double valor) {
-
-        if (dataAbertura != null){
-            LocalDate dataAtual = LocalDate.now();
-            Long dias = ChronoUnit.DAYS.between(dataAtual, dataAbertura);
-            this.saldo += (this.saldo * taxaRendimento) * dias;
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor inválido");            
+        } if(this.saldo - valor < 0){
+            throw new IllegalArgumentException("Saldo insuficiente");          
         }
+        this.saldo -= valor;
+        System.out.println("Saque efetuado com Sucesso!!");
     }
-
-
 }
