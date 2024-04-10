@@ -5,7 +5,7 @@ import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Usuario {
     public ArrayList<Conta> accountList = new ArrayList<>();
@@ -22,10 +22,6 @@ public class Usuario {
         this.nome = nome;
         this.idUsuario = idUsuario;
         this.nome = nome;
-    }
-
-    private String getNome() {
-        return nome;
     }
 
     @Override
@@ -49,7 +45,7 @@ public class Usuario {
         return true;
     }
 
-    public Conta criarContaPoupanca(int idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaPoupanca(int idConta, double depositoInicial, LocalDate dataAbertura) {
         contaPoupanca = new ContaPoupanca(idConta, depositoInicial, dataAbertura);
         temCP = true;
         System.out.println("Sua Conta: "+contaPoupanca);
@@ -57,7 +53,7 @@ public class Usuario {
         return contaPoupanca;
      
     }
-
+  
     public boolean verifyCP() {
         if (temCP == true) {
             return false;
@@ -66,7 +62,7 @@ public class Usuario {
         return true;
     }
 
-    public Conta criarContaInvestimento(int idConta, double depositoInicial, Date dataAbertura) {
+    public Conta criarContaInvestimento(int idConta, double depositoInicial, LocalDate dataAbertura) {
         contaInvestimento = new ContaInvestimento(idConta, depositoInicial, dataAbertura);
         temCI = true;
         System.out.println("Sua Conta: "+contaInvestimento);
@@ -75,7 +71,7 @@ public class Usuario {
     }
 
     public boolean verifyCI() {
-        if (temCC == true) {
+        if (temCI == true) {
             return false;
         }
         temCI = true;

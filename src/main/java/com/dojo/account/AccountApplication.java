@@ -1,7 +1,9 @@
 package com.dojo.account;
 
-import java.util.Date;
-import java.util.Calendar;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.time.LocalDate;
+
 import com.dojo.account.contas.ContaCorrente;
 import com.dojo.account.contas.ContaInvestimento;
 import com.dojo.account.contas.ContaPoupanca;
@@ -14,16 +16,17 @@ public class AccountApplication {
 	static int action = -1;
 
 	public static void main(String[] args) {
+
+		SpringApplication.run(AccountApplication.class, args);
 		Usuario usuario = new Usuario("Aurora", 23);
 		usuarioMenu(usuario);
-	}
-
-	;
+	};
 
 	public static void usuarioMenu(Usuario usuario) {
 		System.out.println("Bem vindo! Que ação deseja executar?");
 		System.out.println("| 1 - Se Registrar | 2 - Criar Conta |\n"
 				+ "| 3 - Sacar | 4 - Depositar |\n| 5 - Ver Saldo | 6 - Transferir | 7 - Apagar Conta");
+
 
 		action = scanner.nextInt();
 		scanner.nextLine();
@@ -54,7 +57,7 @@ public class AccountApplication {
 				usuarioMenu(usuario);
 				break;
 			case 7:
-				// deleteAccount(usuario);
+				removerConta(usuario);
 				usuarioMenu(usuario);
 				break;
 			default:
@@ -62,16 +65,6 @@ public class AccountApplication {
 				usuarioMenu(usuario);
 				break;
 		}
-	}
-
-	private static Date AnteOntem() {
-
-		Calendar calendar = Calendar.getInstance();
-
-		calendar.add(Calendar.DAY_OF_YEAR, -2);
-
-		return calendar.getTime();
-
 	}
 
 	private static Usuario criarUsuario() {
@@ -105,15 +98,20 @@ public class AccountApplication {
 
 		desiredDeposit = scanner.nextDouble();
 
+
+		boolean balanceResult = balanceVerify(accountType, desiredDeposit);
+		if (balanceResult == false) {
+			System.out.println("Deposito Insuficiente para criação da conta desejada!");
+		}
 		switch (accountType) {
 			case 1:
 				usuario.criarContaCorrente(desiredId, desiredDeposit);
 				break;
 			case 2:
-				usuario.criarContaPoupanca(desiredId, desiredDeposit, AnteOntem());
+				usuario.criarContaPoupanca(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
 				break;
 			case 3:
-				usuario.criarContaInvestimento(desiredId, desiredDeposit, AnteOntem());
+				usuario.criarContaInvestimento(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
 				break;
 			default:
 				System.out.println("Opção Inválida!");
@@ -131,12 +129,30 @@ public class AccountApplication {
 				return verifiedCC;
 			case 2:
 				verifiedCP = usuario.verifyCP();
-				return verifiedCP;
+				return verifiedCP;	
 			default:
 				verifiedCI = usuario.verifyCI();
-				return verifiedCI;
+				return verifiedCI;	
 		}
+		
+	}
 
+	private static boolean balanceVerify(int accountType, double desiredDeposit) {
+		boolean result;
+		switch (accountType) {
+			case 1:
+				if (desiredDeposit < -1) result = false;
+				else result = true;
+				return result;
+			case 2:
+				if (desiredDeposit < 50) result = false;
+				else result = true;
+				return result;
+			default:
+				if (desiredDeposit < 1000) result = false;
+				else result = true;
+				return result;
+		}
 	}
 
 	private static void sacar(Usuario usuario) {
@@ -226,6 +242,22 @@ public class AccountApplication {
 //			return;
 //		}
 //
-//
+  }
+
+	private static void removerConta(Usuario usuario) {
+		int desiredId;
+		Conta[] desiredAccount = new Conta[1];
+		System.out.println("Informe o ID da conta que deseja remover:");
+		usuario.getAccounts();
+		desiredId = scanner.nextInt();
+
+		System.out.println("Você escolheu o ID: "+desiredId);
+		// Método de transferir viria aqui!
+		boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
+        if (removed) {
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
+        }
 	}
 }
