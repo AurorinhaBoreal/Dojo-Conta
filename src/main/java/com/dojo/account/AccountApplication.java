@@ -223,13 +223,12 @@ public class AccountApplication {
 		desiredId = scanner.nextInt();
 
 		System.out.println("Você escolheu o ID: "+desiredId);
-		usuario.accountList.forEach((account) -> {
-			if (account.getIdConta() == desiredId) {
-				desiredAccount[0] = account;
-			} 
-		});
-
-		usuario.accountList.contains(desiredAccount[0].getClass());
-
+		// Método de transferir viria aqui!
+		boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
+        if (removed) {
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
+        }
 	}
 }

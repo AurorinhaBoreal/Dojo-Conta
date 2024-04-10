@@ -68,41 +68,41 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 
 # 📖 User Stories
 
-### [US001] Como Cliente, quero poder criar um usuário para utilizar o sistema.
+### ✅ [US001] Como Cliente, quero poder criar um usuário para utilizar o sistema.
 
-### [US002] Como Usuário, quero poder criar uma conta de cada tipo vinculadas a mim.
+### ✅ [US002] Como Usuário, quero poder criar uma conta de cada tipo vinculadas a mim.
 
-### [US002-1] Como Usuário, quero poder abrir minha Conta Investimento
+### ✅ [US002-1] Como Usuário, quero poder abrir minha Conta Investimento
 
-### [US002-2] Como Usuário, quero poder abrir minha Conta Corrente
+### ✅ [US002-2] Como Usuário, quero poder abrir minha Conta Corrente
 
-### [US002-3] Como Usuário, quero poder abrir minha Conta Popupança
+### ✅ [US002-3] Como Usuário, quero poder abrir minha Conta Popupança
 
-### [US003-1] Como Usuário utilizando a Conta Investimento, quero poder depositar dinheiro na mesma
+### ✅ [US003-1] Como Usuário utilizando a Conta Investimento, quero poder depositar dinheiro na mesma
 
-### [US003-2] Como Usuário utilizando a Conta Investimento, quero poder sacar o dinheiro da mesma
+### ✅ [US003-2] Como Usuário utilizando a Conta Investimento, quero poder sacar o dinheiro da mesma
 
-### [US003-3] Como Usuário utilizando a Conta de Investimento, quero pdoer visualizar o saldo acrescido
+### ✅ [US003-3] Como Usuário utilizando a Conta de Investimento, quero poder visualizar o saldo acrescido
 
-### [US004-1] Como Usuário utilizando a Conta Corrente, quero poder depositar dinheiro na Conta
+### ✅ [US004-1] Como Usuário utilizando a Conta Corrente, quero poder depositar dinheiro na Conta
 
-### [US004-2] Como Usuário utilizando a Conta Corrente, quero poder realizar saques e ficar negativado
+### ✅ [US004-2] Como Usuário utilizando a Conta Corrente, quero poder realizar saques e ficar negativado
 
-### [US004-3] Como Usuário utilizando a Conta Corrente, quero visualizar o meu saldo sem acrescimo
+### ✅ [US004-3] Como Usuário utilizando a Conta Corrente, quero visualizar o meu saldo sem acrescimo
 
-### [US005-1] Como Usuário utilizando a Conta Poupança, quero poder realizar depositos
+### ✅ [US005-1] Como Usuário utilizando a Conta Poupança, quero poder realizar depositos
 
-### [US005-2] Como Usuário utilizando a Conta Poupança, quero realizar saques
+### ✅ [US005-2] Como Usuário utilizando a Conta Poupança, quero realizar saques
 
-### [US005-3] Como Usuário utilizando a Conta Popuança, quero poder visualizar o saldo acrescido
+### ✅ [US005-3] Como Usuário utilizando a Conta Popuança, quero poder visualizar o saldo acrescido
 
-### [US006] Como Usuário vinculado a uma Conta Corrente, quero poder deletar uma conta poupança ou de investimento
+### ✅ [US006] Como Usuário vinculado a uma Conta Corrente, quero poder deletar uma conta poupança ou de investimento
 
-### [US006-1] Impedir Removimento da Conta Corrente e Tranferir Saldo para a Mesma ao Removimento de Outras
+### 🚧 [US006-1] Impedir Removimento da Conta Corrente e Tranferir Saldo para a Mesma ao Removimento de Outras
 
-### [US007] Como Usuário vinculado a mais de uma conta, quero poder transferir saldo entre elas.
+### 🚧 [US007] Como Usuário vinculado a mais de uma conta, quero poder transferir saldo entre elas.
 
-### [US008] Como usuário quero uma interface para poder utilizar o sistema
+### ✅ [US008] Como usuário quero uma interface para poder utilizar o sistema
 
 <br>
 
