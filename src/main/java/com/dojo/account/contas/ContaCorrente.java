@@ -6,8 +6,9 @@ public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
     private double saldo = 0;
 
-    public ContaCorrente(int idConta) {
+    public ContaCorrente(int idConta, double saldo) {
         super(idConta);
+        this.saldo = saldo;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class ContaCorrente extends Conta{
         }if(this.saldo - valor < limiteNegativo){
             throw new IllegalArgumentException("Saldo insuficiente");
         }
-        this.saldo -= valor;
+        saldo -= valor;
         System.out.println("Saque efetuado com Sucesso!!");
     }
 
