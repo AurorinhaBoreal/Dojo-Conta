@@ -118,6 +118,7 @@ public class AccountApplication {
 				break;
 			default:
 				System.out.println("Opção Inválida!");
+				usuarioMenu(usuario);
 				break;
 		}
 	}
@@ -266,44 +267,41 @@ public class AccountApplication {
 
 
 	private static void removerConta(Usuario usuario) {
-		int desiredId;
-		Conta[] desiredAccount = new Conta[1];
+		int originId;
+		Conta[] originAccount = new Conta[1];
 		System.out.println("Informe o ID da conta que deseja remover:");
 		usuario.getAccounts();
-		desiredId = scanner.nextInt();
+		originId = scanner.nextInt();
 
-		System.out.println("Você escolheu o ID: "+desiredId);
+		System.out.println("Você escolheu o ID: "+originId);
 
-
-		usuario.accountList.forEach((account) -> {
-			if (account.getIdConta() == desiredId) {
-				desiredAccount[0] = account;
-			}
-		});
-
-		if (desiredAccount[0] instanceof ContaCorrente) {
+		if (originAccount[0] instanceof ContaCorrente) {
 			System.out.println("Não é possivel apagar a conta corrente!");
 		}
 		else {
-			Conta[] corrente = new Conta[1];
+			double originBalance;
+			Conta[] destinyAccount = new Conta[1];
 			usuario.accountList.forEach((account) -> {
-				if(account instanceof  ContaCorrente) {
-					corrente[0] = account;
+				if(account instanceof ContaCorrente) {
+					destinyAccount[0] = account;
 				}
 			});
 
-			desiredAccount[0].getSaldo();
+			originBalance = originAccount[0].getSaldo();
 
+			originAccount[0].saque(originBalance);
+			destinyAccount[0].deposito(originBalance);
+			System.out.println("Transferência efetuada com sucesso");
+			originAccount[0].getSaldo();
+			destinyAccount[0].getSaldo();
 
-			boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
+			
+			boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == originId);
 			if (removed) {
 				System.out.println("Conta removida com sucesso.");
 			} else {
 				System.out.println("Conta não encontrada.");
 			}
 		}
-
-
-
 	}
 }

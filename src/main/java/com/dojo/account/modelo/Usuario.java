@@ -24,6 +24,14 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public void changeTemCP() {
+        temCP = false;
+    }
+
+    public void changeTemCI() {
+        temCP = false;
+    }
+
     @Override
     public String toString() {
         return "| ID: " + this.idUsuario + " | Usuario: " + this.nome + " |";
@@ -93,9 +101,5 @@ public class Usuario {
         accountList.forEach((account) -> {
             System.out.println(account.toString());
         });
-    }
-
-    public void transferir() {
-
     }
 }
