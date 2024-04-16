@@ -275,14 +275,25 @@ public class AccountApplication {
 		System.out.println("Você escolheu o ID: "+desiredId);
 
 
-		// Método de transferir viria aqui!
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == desiredId) {
+				desiredAccount[0] = account;
+			}			
+		});
+
+		if (desiredAccount[0] instanceof ContaCorrente) {
+			System.out.println("Não é possivel apagar a conta corrente!");
+		} 
+		else {
+			boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
+			if (removed) {
+				System.out.println("Conta removida com sucesso.");
+			} else {
+				System.out.println("Conta não encontrada.");
+			}
+		}
 
 
-		boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
-        if (removed) {
-            System.out.println("Conta removida com sucesso.");
-        } else {
-            System.out.println("Conta não encontrada.");
-        }
+		
 	}
 }
