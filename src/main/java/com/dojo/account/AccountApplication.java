@@ -278,13 +278,23 @@ public class AccountApplication {
 		usuario.accountList.forEach((account) -> {
 			if (account.getIdConta() == desiredId) {
 				desiredAccount[0] = account;
-			}			
+			}
 		});
 
 		if (desiredAccount[0] instanceof ContaCorrente) {
 			System.out.println("Não é possivel apagar a conta corrente!");
-		} 
+		}
 		else {
+			Conta[] corrente = new Conta[1];
+			usuario.accountList.forEach((account) -> {
+				if(account instanceof  ContaCorrente) {
+					corrente[0] = account;
+				}
+			});
+
+			desiredAccount[0].getSaldo();
+
+
 			boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
 			if (removed) {
 				System.out.println("Conta removida com sucesso.");
@@ -294,6 +304,6 @@ public class AccountApplication {
 		}
 
 
-		
+
 	}
 }

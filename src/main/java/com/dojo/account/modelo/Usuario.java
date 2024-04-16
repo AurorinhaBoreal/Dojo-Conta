@@ -14,7 +14,7 @@ public class Usuario {
     private boolean temCC = false;
     private boolean temCP = false;
     private boolean temCI = false;
-    private Conta contaCorrente;
+    public Conta contaCorrente;
     private Conta contaInvestimento;
     private Conta contaPoupanca;
 

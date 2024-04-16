@@ -6,6 +6,11 @@ public class ContaCorrente extends Conta{
     private final int limiteNegativo = -500;
     private double saldo = 0;
 
+    @Override
+    public double getSaldo() {
+        return saldo;
+    }
+
     public ContaCorrente(int idConta, double saldo) {
         super(idConta);
         this.saldo = saldo;

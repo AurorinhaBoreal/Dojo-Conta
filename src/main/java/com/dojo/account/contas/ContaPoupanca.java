@@ -8,6 +8,11 @@ public class ContaPoupanca extends Conta {
     private final double taxaRendimento = 0.05;
     private LocalDate dataAbertura;
     private double saldo = 0;
+
+    @Override
+    public double getSaldo() {
+        return saldo;
+    }
     
     public ContaPoupanca(int idConta, double saldo, LocalDate dataAbertura) {
         super(idConta);

@@ -8,6 +8,11 @@ public class ContaInvestimento extends Conta{
     private final double taxaRendimento = 0.10;
     private LocalDate dataAbertura;
     private double saldo = 0;
+
+    @Override
+    public double getSaldo() {
+        return saldo;
+    }
         
     public ContaInvestimento(int idConta, double saldo, LocalDate dataAbertura) {
         super(idConta);
