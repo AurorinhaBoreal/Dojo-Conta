@@ -13,17 +13,20 @@ public class ContaPoupanca extends Conta {
         super(idConta);
         this.saldo = saldo;
         this.dataAbertura = dataAbertura;
+        calcRend();
     }
 
     @Override
-    public String consultarSaldo() {
-
+    public void calcRend() {
         if (dataAbertura != null){
             LocalDate dataAtual = LocalDate.now();
             Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);
             this.saldo += (this.saldo * taxaRendimento) * dias;
         }
+    }
 
+    @Override
+    public String consultarSaldo() {
         return "Seu saldo é "+saldo;
     }
 

@@ -13,6 +13,15 @@ public class ContaInvestimento extends Conta{
         super(idConta);
         this.saldo = saldo;
         this.dataAbertura = dataAbertura;
+        calcRend();
+    }
+
+    public void calcRend() {
+        if (dataAbertura != null){
+            LocalDate dataAtual = LocalDate.now();
+            Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);
+            this.saldo += (this.saldo * taxaRendimento) * dias;
+        }
     }
 
     @Override
@@ -22,12 +31,6 @@ public class ContaInvestimento extends Conta{
 
     @Override
     public String consultarSaldo() {
-        if (dataAbertura != null){
-            LocalDate dataAtual = LocalDate.now();
-            Long dias = ChronoUnit.DAYS.between(dataAbertura, dataAtual);
-            this.saldo += (this.saldo * taxaRendimento) * dias;
-        }
-
         return "Seu saldo é "+this.saldo;
     }
 

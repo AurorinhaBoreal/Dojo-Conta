@@ -9,7 +9,11 @@ public class ContaCorrente extends Conta{
     public ContaCorrente(int idConta, double saldo) {
         super(idConta);
         this.saldo = saldo;
+        calcRend();
     }
+
+    @Override
+    public void calcRend() {};
 
     @Override
     public String consultarSaldo() {
