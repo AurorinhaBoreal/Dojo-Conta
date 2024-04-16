@@ -106,12 +106,15 @@ public class AccountApplication {
 		switch (accountType) {
 			case 1:
 				usuario.criarContaCorrente(desiredId, desiredDeposit);
+				// Identificar o ID da conta criada e calcular rendimento
 				break;
 			case 2:
 				usuario.criarContaPoupanca(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
+				// Identificar o ID da conta criada e calcular rendimento
 				break;
 			case 3:
 				usuario.criarContaInvestimento(desiredId, desiredDeposit, LocalDate.of(2024, 4, 1));
+				// Identificar o ID da conta criada e calcular rendimento
 				break;
 			default:
 				System.out.println("Opção Inválida!");
@@ -173,7 +176,6 @@ public class AccountApplication {
 			}
 		});
 		desiredAccount[0].saque(desiredWithdraw);
-		System.out.println(desiredAccount[0].consultarSaldo());
 	}
 
 	private static void depositar(Usuario usuario) {
@@ -194,7 +196,6 @@ public class AccountApplication {
 			}
 		});
 		desiredAccount[0].deposito(desiredDeposit);
-		System.out.println(desiredAccount[0].consultarSaldo());
 	}
 
 	private static void verSaldo(Usuario usuario) {
@@ -215,11 +216,10 @@ public class AccountApplication {
 	}
 
 	public static void transferir(Usuario usuario) {
-		int desiredId;
 		int fromAccountId, toAccountId;
 		double amount = 0;
 
-
+		usuario.getAccounts();
 		System.out.println("Informe o ID da conta de origem:");
 		fromAccountId = scanner.nextInt();
 
@@ -229,20 +229,41 @@ public class AccountApplication {
 		System.out.println("Informe o valor a ser transferido:");
 		amount = scanner.nextDouble();
 
-//		Conta fromAccount = foreach de busca
-//		Conta toAccount = foreach também
+		saqueTrans(fromAccountId, amount, usuario);
+		depositoTrans(toAccountId, amount, usuario);
 
-//		if (fromAccount == null || toAccount == null) {
-//			System.out.println("Conta de origem ou conta de destino não encontrada.");
-//			return;
-//		}
-//
-//		if (fromAccount.getSaldo() < amount) {
-//			System.out.println("Saldo insuficiente na conta de origem.");
-//			return;
-//		}
-//
-  }
+		System.out.println("Valor Transferido: "+amount);
+  	}
+
+	private static void saqueTrans(int fromAccountId, double amount, Usuario usuario) {
+		Conta[] desiredAccount = new Conta[1];
+
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == fromAccountId) {
+				desiredAccount[0] = account;
+			}
+		});
+		System.out.println("Saq. Antes: "+desiredAccount[0].consultarSaldo());
+		desiredAccount[0].saque(amount);
+		System.out.println("O quantidade de "+amount+" foi sacada da sua conta!");
+		System.out.println("Saq. Depois: "+desiredAccount[0].consultarSaldo());
+	}
+
+
+	private static void depositoTrans(int toAccountId, double amount, Usuario usuario) {
+		Conta[] desiredAccount = new Conta[1];
+
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == toAccountId) {
+				desiredAccount[0] = account;
+			}
+		});
+		System.out.println("Dep. Antes: "+desiredAccount[0].consultarSaldo());
+		desiredAccount[0].deposito(amount);
+		System.out.println("A quantidade de "+amount+" foi depositada na sua conta!");
+		System.out.println("Dep. Depois: "+desiredAccount[0].consultarSaldo());
+	}
+
 
 	private static void removerConta(Usuario usuario) {
 		int desiredId;
@@ -252,7 +273,11 @@ public class AccountApplication {
 		desiredId = scanner.nextInt();
 
 		System.out.println("Você escolheu o ID: "+desiredId);
+
+
 		// Método de transferir viria aqui!
+
+
 		boolean removed = usuario.accountList.removeIf(account -> account.getIdConta() == desiredId);
         if (removed) {
             System.out.println("Conta removida com sucesso.");
