@@ -291,6 +291,14 @@ public class AccountApplication {
 				}
 			});
 
+			if (originAccount[0] instanceof ContaInvestimento) {
+				System.out.println("Deletada Conta Investimento!");
+				usuario.changeTemCI();
+			} else if (originAccount[0] instanceof ContaPoupanca) {
+				System.out.println("Deletada Conta Poupança!");
+				usuario.changeTemCP();
+			}
+
 			originBalance = originAccount[0].getSaldo();
 
 			originAccount[0].saque(originBalance);

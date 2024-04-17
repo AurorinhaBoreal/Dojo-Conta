@@ -29,7 +29,7 @@ public class Usuario {
     }
 
     public void changeTemCI() {
-        temCP = false;
+        temCI = false;
     }
 
     @Override
