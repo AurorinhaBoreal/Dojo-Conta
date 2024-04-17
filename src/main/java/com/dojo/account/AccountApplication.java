@@ -1,7 +1,6 @@
 package com.dojo.account;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDate;
 
 import com.dojo.account.contas.ContaCorrente;
