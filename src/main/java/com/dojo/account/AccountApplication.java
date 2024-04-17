@@ -275,6 +275,10 @@ public class AccountApplication {
 
 		System.out.println("Você escolheu o ID: "+originId);
 
+		usuario.accountList.forEach((account) -> {
+			if (account.getIdConta() == originId) originAccount[0] = account;
+		});
+
 		if (originAccount[0] instanceof ContaCorrente) {
 			System.out.println("Não é possivel apagar a conta corrente!");
 		}
