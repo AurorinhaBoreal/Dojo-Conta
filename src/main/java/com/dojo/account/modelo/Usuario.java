@@ -14,7 +14,7 @@ public class Usuario {
     private boolean temCC = false;
     private boolean temCP = false;
     private boolean temCI = false;
-    private Conta contaCorrente;
+    public Conta contaCorrente;
     private Conta contaInvestimento;
     private Conta contaPoupanca;
 
@@ -22,6 +22,14 @@ public class Usuario {
         this.nome = nome;
         this.idUsuario = idUsuario;
         this.nome = nome;
+    }
+
+    public void changeTemCP() {
+        temCP = false;
+    }
+
+    public void changeTemCI() {
+        temCI = false;
     }
 
     @Override
@@ -93,9 +101,5 @@ public class Usuario {
         accountList.forEach((account) -> {
             System.out.println(account.toString());
         });
-    }
-
-    public void transferir() {
-
     }
 }
