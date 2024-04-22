@@ -1,6 +1,5 @@
 package com.dojo.account;
 
-import org.springframework.boot.SpringApplication;
 import java.time.LocalDate;
 
 import com.dojo.account.contas.ContaCorrente;
@@ -15,8 +14,6 @@ public class AccountApplication {
 	static int action = -1;
 
 	public static void main(String[] args) {
-
-		SpringApplication.run(AccountApplication.class, args);
 		Usuario usuario = new Usuario("Aurora", 23);
 		usuarioMenu(usuario);
 	};

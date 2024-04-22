@@ -18,7 +18,9 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    public void calcRend() {};
+    public void calcRend() {
+        System.out.println(saldo);
+    };
 
     @Override
     public String consultarSaldo() {
