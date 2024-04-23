@@ -98,9 +98,9 @@ Tendo isso em vista, o desafio deve conter o uso de herança, implementação de
 
 ### ✅ [US006] Como Usuário vinculado a uma Conta Corrente, quero poder deletar uma conta poupança ou de investimento
 
-### 🚧 [US006-1] Impedir Removimento da Conta Corrente e Tranferir Saldo para a Mesma ao Removimento de Outras
+### ✅ [US006-1] Impedir Removimento da Conta Corrente e Tranferir Saldo para a Mesma ao Removimento de Outras
 
-### 🚧 [US007] Como Usuário vinculado a mais de uma conta, quero poder transferir saldo entre elas.
+### ✅ [US007] Como Usuário vinculado a mais de uma conta, quero poder transferir saldo entre elas.
 
 ### ✅ [US008] Como usuário quero uma interface para poder utilizar o sistema
 
